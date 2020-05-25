@@ -8,7 +8,7 @@ from flask import Flask, redirect, url_for, request,send_file
 from flask import render_template
 import keyword_graph
 
-app = Flask(__name__, template_folder="/Users/guorong/Desktop/final_version1/templates")
+app = Flask(__name__, template_folder="./templates")
   
 
 @app.route('/success/<name>') 
