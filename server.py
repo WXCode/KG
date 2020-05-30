@@ -30,7 +30,7 @@ def success(name):
 def login(): 
     if request.method == 'POST':       
         user = request.form['nm'] 
-        return redirect(url_for('success',name = user)) 
+        return redirect(url_for('success',name = user,_external=True)) 
     else:
         return render_template('nm.html')
 
