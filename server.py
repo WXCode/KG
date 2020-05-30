@@ -10,7 +10,7 @@ import keyword_graph
 
 app = Flask(__name__, template_folder="./templates")
   
-app.config['SERVER_NAME'] = '34.69.41.27:5000'
+#app.config['SERVER_NAME'] = '34.69.41.27:5000'
 @app.route('/success/<name>') 
 def success(name):
     print("Redirect",name)
@@ -35,7 +35,7 @@ def login():
         return render_template('nm.html')
 
 if __name__ == '__main__': 
-    app.run() 
+    app.run(host = "0.0.0.0",port = 5000) 
 
 
 # In[ ]:
