@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<title>BU Knowledge Graph: HOME</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="//cloud.typography.com/6804272/781004/css/fonts.css" />
+
+
+<style>
+body {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 10;
+  padding: 0;
+  width: 25%;
+  background-color: #ffffff;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  font-family: 'Whitney SSm A', 'Whitney SSm B’, Arial;
+  font-weight: 400;
+  font-style: normal;
+}
+
+li a {
+  display: block;
+  color: #2D2926;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-family: 'Whitney SSm A', 'Whitney SSm B’, Arial;
+  font-weight: 400;
+  font-style: normal;
+}
+
+li a.active {
+  background-color: #CC0000;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #90a8c3;
+  color: white;
+}
+
+
+body {
+  font-family: 'Whitney SSm A', 'Whitney SSm B', Arial, sans-serif;
+  font-size: 22px;
+  color: #2D2926;
+}
+
+.button {
+  background-color: #CC0000; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: auto;
+  cursor: pointer;
+  font-family: 'Whitney SSm A', 'Whitney SSm B', Arial, sans-serif;
+
+}
+
+.note{
+  font-size 5px;
+}
+
+
+</style>
+</head>
+
+<body style="background-color:#ffffff;">	 
+
+
+<!--navigation-->
+	<ul>
+		<br><br>
+		<img src="bu1.png" style= "display: block; margin-left: auto; margin-right: auto;">
+		<br><br><br>
+  		<li><a class="active" href="index.html">HOME</a></li>
+		<li><a href="kg.html">KNOWLEDGE GRAPH</a></li>
+  		<li><a href="next.html">WHAT'S NEXT</a></li>
+  		<li><a href="feedback.html">FEEDBACK</a></li>
+  		<li><a href="join.html">JOIN US</a></li>
+	</ul>
+
+<!--knowledge graph-->
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+  <form action = "/" method = "post" autocomplete="on"> 
+	<br><br><br><br><br><br><br><br><br>
+	<h1 style="text-align:center;">Metropolitan College</h1>
+	<p style="text-align:center;"><i>" Knowledge Extraction and graphing from job listings on the web using NLP"</		i></p>
+	<p style="text-align:center;"><input type = "text" name = "nm" value="Python, Business Analytics" style = "font-size:16pt;"/></p> 
+	<p style="text-align:center;font-size:15px;">The keywords fo researching should be following format: "Python, Business Analytics"</p>
+	<p style="text-align:center;"><button class="button">GENERATE KNOWLEDGE GRAPH</button></p>
+	</form>	
+</div>
+
+</body> 
+</html> 
+
+
+
+
+
