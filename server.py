@@ -4,18 +4,32 @@
 from flask import Flask, redirect, url_for, request,send_file
 from flask import render_template
 import keyword_graph
-
+from flask import jsonify
+import pandas as pd
+import json
 app = Flask(__name__, template_folder="./templates")
-  
-#app.config['SERVER_NAME'] = '0.0.0.0:5000'
+
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+wrd_vecs = ''  
+
 @app.route('/success/<name>') 
 def success(name):
-    print("Redirect",name)
+    if request.method == 'POST':
+        user = request.form['nm'] 
+        return redirect(url_for('success',name = user,_external=True)) 
     keyword_graph.keywords(name)
-    return send_file('templates/Knowledge_Graph.svg')
-    #return keyword_graph.keyword("%s" %name)
+ 
+    return render_template('kg.html')
 
-    
+
+
+@app.route('/wrdvecs') 
+def wrdvecs():   
+    with open('test.json','r') as f:
+        wrd_vecs = json.load(f)
+    return jsonify(wrd_vecs)
+
+
 
 @app.route('/',methods = ['POST', 'GET']) 
 def login(): 
@@ -23,7 +37,7 @@ def login():
         user = request.form['nm'] 
         return redirect(url_for('success',name = user,_external=True)) 
     else:
-        return render_template('nm.html')
+        return render_template('index.html')
 
 if __name__ == '__main__': 
     app.run(host = "0.0.0.0",port = 5000) 
