@@ -29,7 +29,7 @@ def tsne_plot_similar_words(title, labels, embedding_clusters, word_clusters, a,
                 plt.savefig('templates/'+filename, format='svg', dpi=300)
 
 def keywords(value):
-    model_gn = gensim.models.KeyedVectors.load_word2vec_format('../word2vec_us_500.bin', binary=True)
+    model_gn = gensim.models.KeyedVectors.load_word2vec_format('word2vec_us_500.bin', binary=True)
     value = value.split(' ')
     keys = [str(x).lower() for x in value ]
     embedding_clusters = []
