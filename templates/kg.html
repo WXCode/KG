@@ -1,74 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>BU Knowledge Graph: KG</title>
   <meta charset="utf-8" />
-
-
-
-  <style>
-    body {
-      margin: 0;
-    }
-
-    ul {
-      list-style-type: none;
-      margin: 10;
-      padding: 0;
-      width: 25%;
-      background-color: #ffffff;
-      position: fixed;
-      height: 100%;
-      overflow: auto;
-      font-family: 'Whitney SSm A', 'Whitney SSm B', Arial;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    li a {
-      display: block;
-      color: #2D2926;
-      padding: 8px 16px;
-      text-decoration: none;
-      font-family: 'Whitney SSm A', 'Whitney SSm B', Arial;
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    li a.active {
-      background-color: #CC0000;
-      color: white;
-    }
-
-    li a:hover:not(.active) {
-      background-color: #90a8c3;
-      color: white;
-    }
-
-
-    body {
-      font-family: 'Whitney SSm A', 'Whitney SSm B', Arial, sans-serif;
-      font-size: 22px;
-      color: #2D2926;
-    }
-
-    .button {
-      background-color: #CC0000;
-      /* Green */
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: auto;
-      cursor: pointer;
-      font-family: 'Whitney SSm A', 'Whitney SSm B', Arial, sans-serif;
-
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="css/main.css"/>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"></script>
 </head>
 
@@ -85,9 +20,6 @@
   		<li><a href="join.html">JOIN US</a></li>
 	</ul>
 
-
-  <!--navigation-->
-
   <!--knowledge graph-->
   <div style="margin-left:30%;padding:1px 0px;height:20px;">
     <form action="/" method="post" autocomplete="on">
@@ -103,87 +35,6 @@
 
   <br><br><br><br><br><br><br>
   <div id="chart" style="margin-left:30%"></div>
-  <script type="text/javascript">
-    //Width and height
-    var req = new XMLHttpRequest()
-    var jsonResponse;
-    req.open('GET', this.window.location.origin + '/wrdvecs')
-    req.onload = function () {
-      jsonResponse = JSON.parse(req.responseText);
-      var w = 500;
-      var h = 500;
-      var margin = { top: 20, right: 30, bottom: 30, left: 30 },
-        width = w - margin.left - margin.right,
-      height = h - margin.top - margin.bottom;
-
-      var scaleX = d3.scaleLinear()
-        .domain([d3.min(jsonResponse,function(d){return(d.GrLivArea)-20}), 
-          d3.max(jsonResponse,function(d){return(d.GrLivArea)+20})])
-        .range([0, 450]);
-        var scaleY = d3.scaleLinear()
-        .domain([d3.min(jsonResponse,function(d){return(d.SalePrice)-20}), 
-          d3.max(jsonResponse,function(d){return(d.SalePrice)+20})])
-        .range([0, 450]);
-
-
-      // console.log(jsonResponse);
-      //Create SVG element
-      var svgcontainer = d3.select("#chart")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .call(d3.zoom().on("zoom",function(){
-          svgcontainer.attr("transform",d3.event.transform)
-        }));
-
-      svgcontainer.append("g")
-        .call(d3.axisLeft(scaleY));
-
-      svgcontainer.append("g")
-        .call(d3.axisRight(scaleY));
-
-      svgcontainer.append("g")
-        .call(d3.axisBottom(scaleX));
-
-      svgcontainer.append("g")
-        // .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisTop(scaleX));
-
-      svgcontainer.append("g")
-        .selectAll("circle")
-        .data(jsonResponse)
-        .enter()
-        .append("circle")
-        .attr("cx", function (d) {
-          return (scaleX(d.GrLivArea));
-        })
-        .attr("cy", function (d) {
-          return (scaleY(d.SalePrice));
-        })
-        .attr("r", 2.5)
-
-      svgcontainer.append("g")
-      .selectAll("text")
-        .data(jsonResponse)
-        .enter()
-        .append("text")
-        .text(function (d) {
-          return (d.id);
-        })
-        .attr("x", function (d) {
-          return (scaleX(d.GrLivArea)+4);
-        })
-        .attr("y", function (d) {
-          return (scaleY(d.SalePrice)+4);
-        })
-        .attr("font-family","sans-serif")
-        .attr("font-size","10px")
-        .attr("fill","red")
-    }
-
-    req.send();
-    console.log("request Sent");       			
-  </script>
+  <script type="text/javascript" src="js/kgresults.js"></script>
 </body>
-
 </html>
